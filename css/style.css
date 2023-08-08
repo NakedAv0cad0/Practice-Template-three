@@ -465,20 +465,17 @@ ul {
     bottom: 100% ;
     left: 0;
     width: 100%;
-    height: 10px;
+    height: 4.5%;
     background-color: white;
 }
 .features .content .feature::before {
     content: "";
     position: absolute;
-    --number: 450px;
-    bottom: 48.5%;
+    bottom: 53%;
     right: 0;
-    height: 10px;
-    width: 0;
     transition: var(--delay);
-    border-bottom: 200px solid white;
-    border-left: var(--number) solid transparent;
+    border-bottom: 150px solid white;
+    border-left: 450px solid transparent;
     border-right: 0 solid transparent;
     background-color: transparent;
 }
@@ -578,6 +575,226 @@ ul {
 .testimonials .content .comment .text .rating i.fa-solid {
     color: gold;
 }
+/* Team members */
+.team {
+    padding: var(--main-padding) 0 200px;
+    position: relative;
+}
+.team .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 318px);
+    column-gap: 100px; /* 172.5px is the max-width */
+    row-gap: 150px;
+    justify-content: center;
+}
+.team .content .member {
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+.team .content .member:hover .image img {
+    filter: grayscale(1);
+}
+.team .content .member::before{
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 15%;
+    width: 90%;
+    height: 140%;
+    background-color: var(--section-background);
+    z-index: -1;
+    border-radius: 10px;
+}
+.team .content .member::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 0;
+    height: 140%;
+    background-color: #c5c2c2;
+    z-index: -1;
+    border-radius: 10px;
+    transition: var(--delay);
+}
+.team .content .member:hover::after {
+    width: 90%;
+}
+.team .content .member .image img {
+    width: 100%;
+    border-radius: 10px;
+    transition: var(--delay);
+}
+.team .content .member .social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.team .content .member .social i {
+    color: gray;
+}
+.team .content .member .social i:not(:last-of-type){
+    margin-bottom: 20px;
+}
+.team .content .member .social i.fa-facebook:hover {
+    color: #3b5998;
+}
+.team .content .member .social i.fa-twitter:hover {
+    color: #00acee;
+}
+.team .content .member .social i.fa-linkedin:hover {
+    color: #0A66C2;
+}
+.team .content .member .social i.fa-youtube:hover {
+    color: #CD201F;
+}
+.team .content .member .name {
+    position: absolute;
+    bottom: -22%;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.team .content .member .name h2 {
+    color: var(--main-color);
+}
+.team .content .member:hover .name h2 {
+    color: gray;
+}
+.team::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 63px;
+    background-size: 33px;
+    background-image:
+                linear-gradient(45deg, var(--section-background) 12px, transparent 0%), 
+                linear-gradient(-45deg, var(--section-background) 12px, transparent 0%);
+}
+/* Services */
+.services {
+    padding: var(--main-padding) 0;
+    background-color: var(--section-background);
+}
+.services .content {
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    column-gap: 20px;
+    row-gap: 40px;
+    justify-content: center;
+}
+.services .content .service {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0;
+    height: 210px;
+    box-shadow: 0px 1px 3px #77777779;
+    position: relative;
+    transition: var(--delay);
+}
+.services .content .service i {
+    font-size: 55px;
+    color: #D5D5D5;
+}
+.services .content .service h1 {
+    color: var(--main-color);
+}
+.services .content .service .number {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+    background-color: #F9F9F9;
+}
+.services .content .service .number span {
+    display: block;
+    color: white;
+    padding: 0px 20px;
+    font-size: 30px;
+    font-weight: 900;
+    width: 30px;
+    position: relative;
+    border-right: 20px solid transparent;
+    border-top: 50px solid var(--main-color);
+    z-index: 1;
+}
+.services .content .service .number span::before {
+    content: attr(data-value);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+}
+.services .content .service .number span::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    width: 50px;
+    background-color: #D5D5D5;
+    bottom: 0;
+    height: 50px;
+    transform: skew(-20deg);
+    position: absolute;
+    z-index: -1;
+}
+.services .content .service .number p {
+    display: block;
+    padding: 0px 20px;
+}
+.services .content .service:hover {
+    margin-top: -15px;
+}
+.services .content .service::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    background-color: var(--main-color);
+    transition: var(--delay);
+    width: 0;
+}
+.services .content .service:hover::before {
+    width: 100%;
+}
+/* Skills */
+.skills {
+    padding: var(--main-padding) 0;
+}
+.skills .content {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.skills .content .image {
+    width: 30%;
+}
+.skills .content .image img {
+    width: 100%;
+}
+.skills .content .states {
+    width: 40%;
+}
+.skills .content .states .skill .bar {
+    --name : att(data-name);
+    --range: att(data-range);
+    height: 30px;
+    width: 550px;
+    background-color: var(--section-background);
+}
+/* .skills .content .states .skill .bar */
 /* Medai Query */
 /* Phone */
 @media (max-width: 575px) {
@@ -617,6 +834,38 @@ ul {
     }
     .gallery .container .photos {
         grid-template-columns: 100%;
+    }
+    .features .content {
+        grid-template-columns: 100%;
+    }
+    .features .content .feature {
+        display: flex;
+        flex-direction: column;
+    }
+    .features .content .feature .text {
+        height: 500%;
+        position: relative;
+        bottom: 50px;
+        background-color: white;
+    }
+    .features .content .feature::before {
+        bottom: 35%;
+    }
+    .testimonials .content {
+        grid-template-columns: 100%;
+    }
+    .team .content {
+        grid-template-columns: 90%;
+    }
+    .team .content .member::before {
+        height: 130%;
+    }
+    .team .content .member .name {
+        bottom: -20%;
+        left: 20%;
+    }
+    .services .content {
+        grid-template-columns: minmax(90%, 420px);
     }
 }
 /* Small */
@@ -659,6 +908,29 @@ ul {
     .gallery .container .photos {
         grid-template-columns: 550px;
     }
+    .features .content {
+        grid-template-columns: repeat(2, 45%);
+    }
+    .features .content .feature .text {
+        height: 60%;
+    }
+    .testimonials .content {
+        grid-template-columns: 90%;
+    }
+    .team .content {
+        grid-template-columns: 80%;
+    }
+    .team .content .member::before {
+        height: 125%;
+    }
+    .team .content .member .name {
+        bottom: -15%;
+        left: 20%;
+    }
+    .services .content {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 450px));
+        column-gap: 30px;
+    }
 }
 /* Medium */
 @media (max-width: 991px) and (min-width: 768px) {
@@ -690,6 +962,16 @@ ul {
     .gallery .container .photos {
         grid-template-columns: repeat(auto-fill, calc(350px - 10px));
     }
+    .testimonials .content {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 90%));
+    }
+    .team .content {
+        grid-template-columns: repeat(2, 40%);
+    }
+    .services .content {
+        grid-template-columns: repeat(auto-fill, 345px);
+        column-gap: 30px;
+    }
 }
 /* Large */
 @media (max-width: 1200px) and (min-width: 992px) {
@@ -712,6 +994,16 @@ ul {
         column-gap: 40px;
         row-gap: 40px;
     }
+    .team .content {
+        grid-template-columns: repeat(auto-fill, 400px);
+    }
+    .team .content .member::before {
+        height: 135%;
+    }
+    .services .content {
+        grid-template-columns: repeat(auto-fill, 442px);
+        column-gap: 30px;
+    } 
 }
 @media (min-width: 1200px) {
     .container {
