@@ -838,7 +838,7 @@ ul {
     align-items: center;
 }
 .work .content img {
-    width: 450px;
+    width: calc(100% - 70px);
 }
 .work .content .steps {
     display: grid;
@@ -879,7 +879,131 @@ ul {
     color: #777;
     line-height: 1.6;
 }
-
+/* Events */
+.events {
+    padding: var(--main-padding) 0;
+    position: relative;
+}
+.events > img {
+    position: absolute;
+    z-index: -1;
+}
+.events > img:first-of-type {
+    top: 60%;
+    left: 0;
+}
+.events > img:last-of-type {
+    top: 22%;
+    right: 0;
+}
+.events .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.events .content .image {
+    width: 400px;
+}
+.events .content .image img {
+    width: 100%;
+}
+.events .content .event {
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.events .content .event .timer {
+    display: flex;
+    gap: 20px;
+}
+.events .content .event .timer .bar {
+    height: 100px;
+    width: 60px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    position: relative;
+}
+.events .content .event .timer .bar::before {
+    content: attr(data-name);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+}
+.events .content .event .timer .bar hr {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+.events .content .event .timer .bar::after {
+    content: attr(data-value);
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: var(--main-color);
+    font-weight: 900;
+}
+.events .content .event .timer .bar:hover {
+    border-color: var(--main-color);
+}
+.events .content .event .timer .bar:hover hr {
+    border-color: var(--main-color) transparent transparent;
+}
+.events .content .event .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.events .content .event .text h1 {
+    text-align: center;
+}
+.events .content .event .text p {
+    color: #777;
+    text-align: center;
+}
+.events .mail {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.events .mail  .box {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50px;
+    gap: 20px;
+    background-color: #F6F5F5;
+}
+.events .mail input {
+    display: block;
+    border: none;
+    height: 10px;
+    width: 350px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 50px;
+}
+.events .mail input:focus {
+    outline: none;
+}
+.events .mail button {
+    display: block;
+    border-radius: 50px;
+    width: 100px;
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px;
+}
 /* .skills .content .states .skill .bar */
 /* Medai Query */
 /* Phone */
@@ -957,6 +1081,25 @@ ul {
         grid-template-columns: 90%;
         row-gap: 30px;
     }
+    .work .content {
+        grid-template-columns: 100%;
+        row-gap: 40px;
+    }
+    .work .content .steps .step .text {
+        padding: 5px 0 5px 5px;
+    }
+    .work .content .steps .step .text p {
+        font-size: 13px;
+    }
+    .events .content .image, .events > img {
+        display: none;
+    }
+    .events .mail .box {
+        max-width: 90%;
+    }
+    .events .mail .box input {
+        height: 0;
+    }
 }
 /* Small */
 @media (max-width: 767px) and (min-width: 576px) {
@@ -1025,6 +1168,16 @@ ul {
         grid-template-columns: 85%;
         row-gap: 30px;
     }
+    .work .content {
+        grid-template-columns: 550px;
+        row-gap: 10px;
+    }
+    .events .content .image, .events > img {
+        display: none;
+    }
+    .events .mail .box {
+        max-width: 500px;
+    }
 }
 /* Medium */
 @media (max-width: 991px) and (min-width: 768px) {
@@ -1070,6 +1223,16 @@ ul {
         grid-template-columns: 550px;
         row-gap: 30px;
     }
+    .work .content {
+        grid-template-columns: repeat(2, 370px);
+        gap: 10px;
+    }
+    .events .content .image {
+        display: none;
+    }
+    .events > img:first-of-type {
+        top: 15%;
+    }
 }
 /* Large */
 @media (max-width: 1200px) and (min-width: 992px) {
@@ -1104,6 +1267,12 @@ ul {
     } 
     .skills .content {
         grid-template-columns: 400px 450px;
+    }
+    .work .content {
+        grid-template-columns: repeat(2, 450px);
+    }
+    .events > img:last-of-type {
+        top: 15%;
     }
 }
 @media (min-width: 1200px) {
