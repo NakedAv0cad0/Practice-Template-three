@@ -5,6 +5,7 @@
     --delay: 0.3s;
     --main-padding: 100px;
     --section-background: #ececec;
+    --border-color: #77777779;
 }
 /* Globla Rules */
 * {
@@ -427,7 +428,7 @@ ul {
     justify-content: center;
 }
 .features .content .feature {
-    border: 1px solid #77777779;
+    border: 1px solid var(--border-color);
     height: 725px;
     position: relative;
     overflow: hidden;
@@ -696,7 +697,7 @@ ul {
     align-items: center;
     padding: 20px 0 0;
     height: 210px;
-    box-shadow: 0px 1px 3px #77777779;
+    box-shadow: 0px 1px 3px var(--border-color);
     position: relative;
     transition: var(--delay);
 }
@@ -773,26 +774,57 @@ ul {
 }
 .skills .content {
     padding-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 30px;
+    display: grid;
+    grid-template-columns: 450px 550px;
+    justify-content: center;
 }
 .skills .content .image {
-    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .skills .content .image img {
     width: 100%;
 }
 .skills .content .states {
-    width: 40%;
 }
 .skills .content .states .skill .bar {
-    --name : att(data-name);
-    --range: att(data-range);
-    height: 30px;
-    width: 550px;
+    height: 25px;
     background-color: var(--section-background);
+    position: relative;
+    margin-bottom: 20px;
+}
+.skills .content .states .skill .bar::before {
+    content: attr(data-range);
+    position: absolute;
+    left: 100%;
+    top: -37px;
+    height: 20px;
+    width: 30px;
+    transform: translateX(-108%);
+    text-align: center;
+    font-size: 12px;
+    color: var(--main-color);
+    font-weight: 700;
+}
+.skills .content .states .skill .bar::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: -36px;
+    height: 21px;
+    width: 33px;
+    transform: translateX(-105%);
+    z-index: -1;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+.skills .content .states .skill .bar span {
+    height: 100%;
+    background-color: var(--main-color);
+    width: var(--range);
+    display: block;
 }
 /* .skills .content .states .skill .bar */
 /* Medai Query */
@@ -867,6 +899,10 @@ ul {
     .services .content {
         grid-template-columns: minmax(90%, 420px);
     }
+    .skills .content {
+        grid-template-columns: 90%;
+        row-gap: 30px;
+    }
 }
 /* Small */
 @media (max-width: 767px) and (min-width: 576px) {
@@ -931,6 +967,10 @@ ul {
         grid-template-columns: repeat(auto-fill, minmax(300px, 450px));
         column-gap: 30px;
     }
+    .skills .content {
+        grid-template-columns: 85%;
+        row-gap: 30px;
+    }
 }
 /* Medium */
 @media (max-width: 991px) and (min-width: 768px) {
@@ -971,6 +1011,10 @@ ul {
     .services .content {
         grid-template-columns: repeat(auto-fill, 345px);
         column-gap: 30px;
+    } 
+    .skills .content {
+        grid-template-columns: 550px;
+        row-gap: 30px;
     }
 }
 /* Large */
@@ -1004,6 +1048,9 @@ ul {
         grid-template-columns: repeat(auto-fill, 442px);
         column-gap: 30px;
     } 
+    .skills .content {
+        grid-template-columns: 400px 450px;
+    }
 }
 @media (min-width: 1200px) {
     .container {
