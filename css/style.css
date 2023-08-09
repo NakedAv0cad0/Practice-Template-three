@@ -32,6 +32,7 @@ ul {
 }
 .heading {
     margin: 0 auto var(--main-padding);
+    font-size: 28px;
     text-align: center;
     text-transform: uppercase;
     font-weight: 600;
@@ -787,8 +788,6 @@ ul {
 .skills .content .image img {
     width: 100%;
 }
-.skills .content .states {
-}
 .skills .content .states .skill .bar {
     height: 25px;
     background-color: var(--section-background);
@@ -826,6 +825,61 @@ ul {
     width: var(--range);
     display: block;
 }
+/* Work */
+.work {
+    padding: var(--main-padding) 0;
+    background-color: var(--section-background);
+}
+.work .content {
+    display: grid;
+    grid-template-columns: repeat(2, 520px);
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+.work .content img {
+    width: 450px;
+}
+.work .content .steps {
+    display: grid;
+    grid-template-rows: repeat(3, 170px);
+    row-gap: 20px;
+}
+.work .content .steps .step {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background-color: #F6F5F5;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    position: relative;
+    z-index: 2;
+}
+.work .content .steps .step::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    transition: var(--delay);
+    background-color: var(--section-background);
+    z-index: -1;
+}
+.work .content .steps .step:hover::before {
+    height: 100%;
+    width: 100%;
+}
+.work .content .steps .step img {
+    width: 60px;
+}
+.work .content .steps .step .text p {
+    color: #777;
+    line-height: 1.6;
+}
+
 /* .skills .content .states .skill .bar */
 /* Medai Query */
 /* Phone */
