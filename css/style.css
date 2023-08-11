@@ -1189,6 +1189,110 @@ img.dot2 {
     background-color: white;
     border: 1px solid var(--section-background);
 }
+/* Stats */
+.stats {
+    padding: 60px 0 var(--main-padding);
+    background-image: url('/imgs/stats.jpg');
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+}
+.stats::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.938);
+    z-index: -1;
+}
+.stats h1 {
+    text-align: center;
+    font-size: 40px;
+}
+.stats .content {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    justify-content: center;
+    padding: 20px 0;
+    gap: 20px;
+}
+.stats .content .stat {
+    --delay: 1s ;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 190px;
+    position: relative;
+    z-index: 1;
+}
+.stats .content .stat .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.247);
+    z-index: 1;
+    transition: var(--delay);
+}
+.stats .content .stat:hover .overlay {
+    background-color: transparent;
+}
+.stats .content .stat::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 2px;
+    height: 0;
+    transition: var(--delay);
+    background-color: var(--main-color);
+    transform: translateY(-100%);
+}
+.stats .content .stat::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 0;
+    transition: var(--delay);
+    background-color: var(--main-color);
+}
+.stats .content .stat:hover::before, .stats .content .stat:hover::after {
+    height: 100%;
+}
+.stats .content .stat span {
+    font-size: 50px;
+    font-weight: 600;
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.stats .content .stat span::before {
+    content: var(--icon);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+}
+.stats .content .stat span::after {
+    content: var(--name);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: var(--main-color);
+    font-style: italic;
+}
 /* Medai Query */
 /* Phone */
 @media (max-width: 575px) {
@@ -1303,6 +1407,9 @@ img.dot2 {
         width: calc(100% - 20px);
         align-self: auto;
     }
+    .stats .content {
+        grid-template-columns: minmax(80%, 350px);
+    }
 }
 /* Small */
 @media (max-width: 767px) and (min-width: 576px) {
@@ -1400,6 +1507,9 @@ img.dot2 {
         width: calc(100% - 20px);
         align-self: auto;
     }
+    .stats .content {
+        grid-template-columns: repeat(2, 250px);
+    }
 }
 /* Medium */
 @media (max-width: 991px) and (min-width: 768px) {
@@ -1474,6 +1584,9 @@ img.dot2 {
         width: calc(100% - 20px);
         align-self: auto;
     }
+    .stats .content {
+        grid-template-columns: repeat(2, 300px);
+    }
 }
 /* Large */
 @media (max-width: 1200px) and (min-width: 992px) {
@@ -1521,6 +1634,9 @@ img.dot2 {
     .videos .content .video .image {
         width: 600px;
     }
+    .stats .content {
+        grid-template-columns: repeat(2, 300px);
+    }
 }
 @media (min-width: 1200px) {
     .container {
@@ -1529,5 +1645,8 @@ img.dot2 {
     .pracing .content .price:nth-last-of-type(2) {
         bottom: 30px;
     }
+    .stats {
+        height: 25vh;
+        padding: 60px 0 calc(var(--main-padding) + 50px);
+    }
 }
-/* modifie the .heading raduis */
