@@ -1297,7 +1297,7 @@ img.dot2 {
 /* Discount */
 .discount {
     padding: 0;
-    height: 100vh;
+    height: fit-content;
 }
 .discount .content {
     display: grid;
@@ -1384,6 +1384,111 @@ img.dot2 {
     background-color: var(--main-color);
     width: var(--fleid-width);
     margin-top: 20px;
+}
+/* Footer */
+.footer {
+    padding: 70px 0;
+    background-color: #191919;
+    color: white;
+    height: fit-content;
+}
+.footer .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 45px;
+    justify-content: center;
+}
+.footer .content .clon h1 {
+    font-size: 45px;
+}
+.footer .content .clon .social {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+.footer .content .clon .social a {
+    background-color: #242424;
+    height: 50px;
+    width: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .content .clon .social a:nth-last-of-type(2) {
+    margin: 0 10px;
+}
+.footer .content .clon .social i {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.719);
+}
+.footer .content .clon p, .footer .content .clon a {
+    color: rgba(255, 255, 255, 0.719);
+    line-height: 1.6;
+}
+.footer .content .clon ul li {
+    padding: 12px 10px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.footer .content .clon ul li:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-color);
+}
+.footer .content .clon ul li:hover a {
+    margin-left: 10px;
+    color: white;
+}
+.footer .content .clon ul li a {
+    position: relative;
+    display: inline-block;
+    transition: var(--delay);
+}
+.footer .content .clon ul li a::before {
+    content: '\f101';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--main-color);
+    position: absolute;
+    left: -25px;
+}
+.footer .content .clon .info .box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.footer .content .clon .info .box i {
+    font-size: 20px;
+    color: var(--main-color);
+}
+.footer .content .clon .collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 80px);
+    gap: 5px;
+}
+.footer .content .clon .collection .box img {
+    width: 100%;
+    object-fit: cover;
+}
+.footer .content .clon .collection .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--section-background);
+    padding: 3px;
+}
+#owner {
+    display: block;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #191919;
+    border-top: 1px solid var(--border-color);
+}
+#owner span {
+    color: white;
+    font-size: 18px;
 }
 /* Medai Query */
 /* Phone */
@@ -1618,6 +1723,26 @@ img.dot2 {
     .discount .content {
         grid-template-columns: 100%;
     }
+    .footer .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 45px;
+        justify-content: center;
+        padding: 0 15px;
+    }
+    .footer .content .clon {
+        align-items: center;
+        text-align: center;
+    }
+    .footer .content .clon .social {
+        justify-content: center;
+    }
+    .footer .content .clon .info .box {
+        flex-direction: column;
+    }
+    .footer .content .clon .collection {
+        grid-template-columns: repeat(auto-fit, 120px);
+    }
 }
 /* Medium */
 @media (max-width: 991px) and (min-width: 768px) {
@@ -1697,6 +1822,13 @@ img.dot2 {
     }
     .discount .content {
         grid-template-columns: 100%;
+    }
+    .footer .content .clon .info .box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .footer .content .clon .collection {
+        grid-template-columns: repeat(auto-fit, 120px);
     }
 }
 /* Large */
