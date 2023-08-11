@@ -272,6 +272,7 @@ img.dot2 {
     animation: arrow infinite linear 2s alternate;
     font-size: 25px;
     color: var(--main-color-alt);
+    z-index: 1;
 }
 @keyframes arrow {
     0% {
@@ -1293,6 +1294,97 @@ img.dot2 {
     color: var(--main-color);
     font-style: italic;
 }
+/* Discount */
+.discount {
+    padding: 0;
+    height: 100vh;
+}
+.discount .content {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: 100vh;
+}
+.discount .content .offer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: bg-transform 10s infinite alternate;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.discount .content .offer::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1787e0f5;
+    z-index: -1;
+}
+@keyframes bg-transform {
+    0% {
+        background-image: url('/imgs/discount-background1.jpg');
+        background-size: cover;
+    }
+    100% {
+        background-image: url('/imgs/discount-background2.jpg');
+        background-size: cover;
+    }
+}
+.discount .content h1 {
+    font-weight: 900;
+    font-size: 35px;
+    margin-bottom: 50px;
+}
+.discount .content .offer p {
+    max-width: 500px;
+    font-size: 18px;
+}
+.discount .content .offer img {
+    width: 350px;
+}
+.discount .content form {
+    --fleid-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.discount .content form .info {
+    width: var(--fleid-width);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 1px 2px var(--border-color);
+    background-color: #f4f4f440;
+    caret-color: var(--main-color);
+}
+.discount .content form .info:focus {
+    outline: none;
+}
+.discount .content form input {
+    height: 35px;
+}
+.discount .content form textarea {
+    height: 200px;
+    resize: none;
+}
+.discount .content form button {
+    padding: 10px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: var(--main-color);
+    width: var(--fleid-width);
+    margin-top: 20px;
+}
 /* Medai Query */
 /* Phone */
 @media (max-width: 575px) {
@@ -1410,6 +1502,19 @@ img.dot2 {
     .stats .content {
         grid-template-columns: minmax(80%, 350px);
     }
+    .discount .content {
+        grid-template-columns: 100%;
+    }
+    .discount .content .offer {
+        animation: none;
+        background-image: url(/imgs/discount-background1.jpg);
+    }
+    .discount .content .offer img {
+        width: 300px;
+    }
+    .discount .content form {
+        --fleid-width: 300px
+    }
 }
 /* Small */
 @media (max-width: 767px) and (min-width: 576px) {
@@ -1489,7 +1594,7 @@ img.dot2 {
         display: none;
     }
     .events .mail .box {
-        max-width: 500px;
+        max-width: 450px;
     }
     .pracing .content {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1509,6 +1614,9 @@ img.dot2 {
     }
     .stats .content {
         grid-template-columns: repeat(2, 250px);
+    }
+    .discount .content {
+        grid-template-columns: 100%;
     }
 }
 /* Medium */
@@ -1586,6 +1694,9 @@ img.dot2 {
     }
     .stats .content {
         grid-template-columns: repeat(2, 300px);
+    }
+    .discount .content {
+        grid-template-columns: 100%;
     }
 }
 /* Large */
