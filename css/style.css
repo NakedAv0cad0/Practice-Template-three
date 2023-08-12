@@ -103,6 +103,7 @@ img.dot2 {
 .header {
     width: 100%;
     background-color: white;
+    position: relative;
 }
 .header .container {
     display: flex;
@@ -121,10 +122,11 @@ img.dot2 {
     justify-content: flex-end;
 }
 .header .links .link {
-    padding: 15px 20px;
+    padding: 20px 20px 21px;
     font-size: 18px;
     transition: var(--delay);
     position: relative;
+    display: block;
 }
 .header .links .link::before {
     position: absolute;
@@ -136,9 +138,9 @@ img.dot2 {
     background-color: var(--main-color-alt);
     transition: var(--delay);
 }
-.header .links > li {
-    padding: 15px 20px;
-}
+/* .header .links > li {
+    padding: 20px 10px 21px;
+} */
 .header .links .link:hover {
     color: var(--main-color);
     background-color: var(--section-background);
@@ -146,69 +148,76 @@ img.dot2 {
 .header .links .link:hover::before {
     width: 100%;
 }
+.header .links li:last-of-type:hover .hidden {
+    display: grid;
+    animation: hidden var(--delay);
+}
 .header .hidden {
+    --top-hidden: 44px;
     position: absolute;
-    display: none;
-    top: 46px;
-    left: 0;
-    padding: 40px;
+    top: var(--top-hidden);
+    left: 7%;
     margin-top: 17px;
-    justify-content: space-between;
-    width: calc(100% - 80px);
-    transition: var(--delay);
-    background-color: white;
-    border-top: 1px solid var(--section-background);
+    width: fit-content;
+    padding: 40px 20px;
+    display: none;
+    grid-template-columns: 500px repeat(2, 270px);
+    column-gap: 40px;
+    border-top: 2px solid var(--section-background);
     border-bottom: 3px solid var(--main-color);
-    gap: 20px;
+    background-color: white;
+    transition: var(--delay);
     z-index: 3000;
 }
-.header .hidden img {
-    width: 50%;
-    height: 50%;
+@keyframes hidden {
+    0% {
+        top: 100px;
+    }
+    100% {
+        top: var(--top-hidden);   
+    }
 }
-.header .hidden .links {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    align-items: center;
+.header .hidden .image img {
+    width: 100%;
 }
-.header .hidden .links ul {
-    width: 45%;
-}
-.header .hidden .links ul a {
+.header .hidden ul a {
     display: block;
-    padding: 10px;
+    padding: 15px 10px;
     position: relative;
     color: var(--main-color);
     font-weight: bold;
     width: calc(100% - 20px);
+    left: 20px;
     z-index: 1;
 }
-.header .hidden .links ul a::after {
+.header .hidden ul li {
+    width: 100%;
+    border-bottom: 1px solid var(--section-background);
+}
+.header .hidden a::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: -20px;
     top: 0;
     height: 100%;
     width: 0;
-    background-color: var(--section-background);
+    background-color: #f4f4f48a;
     transition: var(--delay);
     z-index: -1;
 }
-.header .hidden .links ul a:hover::after {
+.header .hidden ul a:hover::after {
     width: 100%;
 }
 .header .hidden .links ul li:not(:last-of-type) {
     border-bottom: 1px solid var(--section-background);
 }
-.header .links li:last-of-type:hover .hidden {
-    display: flex;
-    animation: to-top var(--delay);
-}
-.header .hidden .links ul a::before {
+.header .hidden a::before {
 	content: "\f144";
-	font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
 }   
 /* Landing */
 .landing {
@@ -1506,18 +1515,16 @@ img.dot2 {
         position: relative;
     }
     .header .links .hidden {
-        width: 100%;
-        left: -25px;
-        margin-top: 0;
-        top: 40px;
-        padding: 15px
+        --top-hidden: 22px;
+        left: -8%;
+        grid-template-columns: 300px;
     }
-    .header .links .hidden img {
+    .header .links .hidden .image {
         display: none;
     }
-    .header .links > li, .header .links .link {
-        padding: 5px;
-        font-size: medium;
+        .header .links > li, .header .links .link {
+            padding: 5px;
+        font-size: small;
     }
     .landing .intro .text {
         text-align: center;
@@ -1636,17 +1643,12 @@ img.dot2 {
         position: relative;
     }
     .header .links .hidden {
-        width: 100%;
-        left: -15px;
-        margin-top: 0;
-        top: 53px;
-        padding: 15px;
+        --top-hidden: 44px;
+        left: -17%;
+        grid-template-columns: repeat(2, 240px);
     }
-    .header .links .hidden img {
+    .header .links .hidden .image {
         display: none;
-    }
-    .header .links > li, .header .links .link {
-        padding: 10px;
     }
     .landing .intro {
         top: 30%;
@@ -1752,10 +1754,11 @@ img.dot2 {
     .header .container {
         flex-direction: column;
     }
-    .header .links {
-        position: relative;
+    .header .links .hidden {
+        --top-hidden: 69px;
+        grid-template-columns: repeat(2, 300px);
     }
-    .header .links .hidden img {
+    .header .links .hidden .image {
         display: none;
     }
     .landing .intro {
@@ -1837,8 +1840,8 @@ img.dot2 {
         max-width: 970px;
     }
     .header .links .hidden {
-        width: 100%;
-        left: -40px;
+        left: 0;
+        grid-template-columns: 350px repeat(2, 250px);
     }
     .landing .intro {
         flex-direction: column;
@@ -1884,6 +1887,9 @@ img.dot2 {
 @media (min-width: 1200px) {
     .container {
         max-width: 1170px;
+    }
+    .header .links .hidden {
+        left: 0;
     }
     .pracing .content .price:nth-last-of-type(2) {
         bottom: 30px;
