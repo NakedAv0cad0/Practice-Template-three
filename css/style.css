@@ -212,7 +212,7 @@ img.dot2 {
     border-bottom: 1px solid var(--section-background);
 }
 .header .hidden a::before {
-	content: "\f144";
+	content: var(--icon);
     font-family: "Font Awesome 5 Free";
     position: absolute;
     left: -15px;
@@ -1390,9 +1390,13 @@ img.dot2 {
     color: white;
     font-weight: 600;
     font-size: 18px;
-    background-color: var(--main-color);
     width: var(--fleid-width);
     margin-top: 20px;
+    transition: var(--delay);
+    background-color: var(--main-color);
+}
+.discount .content form button:hover {
+    background-color: var(--main-color-alt);
 }
 /* Footer */
 .footer {
