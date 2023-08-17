@@ -104,9 +104,15 @@ img.dot2 {
 }
 /* Header */
 .header {
+    --link-font-size: 1rem;
     width: 100%;
     background-color: white;
     position: relative;
+}
+@media (max-width: 575px) {
+    .header {
+        --link-font-size: 14px;
+    }
 }
 .header .container {
     display: flex;
@@ -124,18 +130,40 @@ img.dot2 {
     justify-content: center;
     align-items: center;
 }
+@media (max-width: 991px) {
+    .header .logo {
+        width: 100%;
+        height: 50px;
+    }
+}
 .header .links {
     display: flex;
+}
+@media (max-width: 575px) {
+    .header {
+        --link-font-size: 14px;
+    }
+}
+@media (max-width: 991px) {
+    .header .links {
+        margin: auto;
+    }
 }
 .header .links .link {
     height: 70px;
     padding: 0 30px;
-    font-size: 1rem;
+    font-size: var(--link-font-size);
     transition: var(--delay);
     position: relative;
     display: block;
     display: flex;
     align-items: center;
+}
+@media (max-width: 575px) {
+    .header .links > li, .header .links .link {
+        height: 40px;
+        padding: 5px;
+    }
 }
 .header .links .link::before {
     position: absolute;
@@ -204,7 +232,7 @@ img.dot2 {
 .header .megamenu ul a {
     display: block;
     padding: 15px;
-    font-size: 1rem;
+    font-size: var(--link-font-size);
     position: relative;
     color: var(--main-color);
     font-weight: bold;
@@ -248,7 +276,7 @@ img.dot2 {
 /* Landing */
 .landing {
     width: 100%;
-    height: calc(100vh - 63px);
+    height: calc(100vh - 70px);
     background-color: var(--section-background);
     position: relative;
 }
@@ -267,13 +295,31 @@ img.dot2 {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     gap: 30px;
     max-height: 40%;
 }
+@media (max-width: 991px) {
+    .landing .intro {
+        top: 30%;
+    }
+}
+@media (max-width: 575px) {
+    .landing .intro .text {
+        text-align: center;
+        max-width: 350px;
+    }
+}
 .landing .intro img {
     width: 600px;
     animation: up-down infinite linear 2s alternate;
+    z-index: 1;
+}
+@media (max-width: 991px) {
+    .landing .intro img {
+        display: none;
+    }
 }
 @keyframes up-down {
     0% {
@@ -288,6 +334,11 @@ img.dot2 {
 .landing .intro .text {
     max-width: 500px;
     line-height: 1.6;
+}
+@media (max-width: 991px) {
+    .landing .intro .text {
+        text-align: center;
+    }
 }
 .landing .intro .text h1 {
     font-size: 40px;
@@ -304,31 +355,19 @@ img.dot2 {
     bottom: 5%;
     left: 50%;
     transform: translate(-50%, 0);
-    animation: arrow infinite linear 2s alternate;
+    animation: arrow infinite linear 2s;
     font-size: 25px;
     color: var(--main-color-alt);
     z-index: 1;
 }
 @keyframes arrow {
-    0% {
+    0%, 20%, 40%, 60%, 80%, 100%  {
         margin-top: 0;
         padding-bottom: 0;
     }
-    25% {
+    50%, 70% {
         margin-top: -20px;
         padding-bottom: 20px;
-    }
-    50% {
-        margin-top: 0;
-        padding-bottom: 0;
-    }
-    75% {
-        margin-top: -20px;
-        padding-bottom: 20px;
-    }
-    100% {
-        margin-top: 0;
-        padding-bottom: 0;
     }
 }
 /* Articles */
@@ -338,28 +377,26 @@ img.dot2 {
 }
 .articles .container .content {
     display: grid;
-    grid-template-columns: repeat(4, 250px);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
-    justify-content: center;    
+    justify-content: center;
 }
 .articles .container .content .article {
     border-radius: 5px;
     box-shadow: 0px 0px 4px 0px #0000002d;
     position: relative;
     transition: var(--delay);
+    overflow: hidden;
 }
 .articles .container .content .article:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 0px 4px 1px #00000052;
 }
 .articles .container .content .article img {
-    width: 100%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    width: 100%; 
 }
 .articles .container .content .article .text {
-    padding: 10px;
-    max-width: 230px;
+    padding: 20px;
 }
 .articles .container .content .article .text h2 {
     font-size: 18px;
@@ -367,10 +404,11 @@ img.dot2 {
 .articles .container .content .article p {
     color: #777;
     line-height: 1.5;
+    max-width: 400px;
 }
 .articles .container .content .article .box {
-    display: flex;
     margin-top: 20px;
+    display: flex;
     justify-content: space-between;
     padding-top: 20px;
     border-top: 1px solid #7777774a;
@@ -390,9 +428,6 @@ img.dot2 {
     animation: arrow-left infinite 0.5s;
 }
 @keyframes arrow-left {
-    0% {
-        left: 0;
-    }
     100% {
         left: 5px;
     }
@@ -1538,36 +1573,6 @@ img.dot2 {
     img.dot1, img.dot2 {
         display: none;
     }
-    .header .container {
-        justify-content: center;
-    }
-    .header .logo {
-        width: 100%;
-        height: 50px;
-    }
-    .header .links {
-        position: relative;
-        margin: auto;
-    }
-    .header .links > li, .header .links .link {
-        height: 40px;
-        font-size: 14px;
-        padding: 5px;
-    }
-    .header .logo {
-        height: 30px;
-    }
-    .landing .intro .text {
-        text-align: center;
-        max-width: 350px;
-    }
-    .landing .intro img {
-        display: none;
-    }
-    .articles .container .content {
-        grid-template-columns: 100%;
-        row-gap: 20px;
-    }
     .gallery .container .photos {
         grid-template-columns: 100%;
     }
@@ -1667,27 +1672,6 @@ img.dot2 {
     img.dot1, img.dot2 {
         display: none;
     }
-    .header .logo {
-        width: 100%;
-        height: 50px;
-    }
-    .header .links {
-        position: relative;
-        margin: auto;
-    }
-    .landing .intro {
-        top: 30%;
-    }
-    .landing .intro .text {
-        text-align: center;
-    }
-    .landing .intro img {
-        display: none;
-    }
-    .articles .container .content {
-        grid-template-columns: 550px;
-        column-gap: auto;
-    }
     .gallery .container .photos {
         grid-template-columns: 550px;
     }
@@ -1776,19 +1760,6 @@ img.dot2 {
     .container {
         max-width: 750px;
     }
-    .landing .intro {
-        top: 30%;
-    }
-    .landing .intro .text {
-        text-align: center;
-    }
-    .landing .intro img {
-        display: none;
-    }
-    .articles .container .content {
-        grid-template-columns: repeat(auto-fill, calc(375px - 10px));
-        column-gap: 10px;
-    }
     .gallery .container .photos {
         grid-template-columns: repeat(auto-fill, calc(350px - 10px));
     }
@@ -1853,13 +1824,6 @@ img.dot2 {
 @media (max-width: 1200px) and (min-width: 992px) {
     .container {
         max-width: 970px;
-    }
-    .landing .intro {
-        flex-direction: column;
-    }
-    .articles .container .content {
-        grid-template-columns: repeat(auto-fill, 320px);
-        column-gap: 5px;
     }
     .gallery .container .photos {
         grid-template-columns: repeat(3, 290px);
