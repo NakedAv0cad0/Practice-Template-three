@@ -398,10 +398,20 @@ img.dot2 {
     margin: 0;
     letter-spacing: -2px;
 }
+@media (max-width:575px) {
+    .landing .intro .text h1 {
+        font-size: 35px;
+    }
+}
 .landing .intro .text p {
     font-size: 23px;
     color: #777;
     margin: 0;
+}
+@media (max-width:575px) {
+    .landing .intro .text p {
+        font-size: 18px;
+    }
 }
 .landing i {
     position: absolute;
@@ -481,7 +491,7 @@ img.dot2 {
 }
 @keyframes arrow-left {
     100% {
-        left: 5px;
+        transform: translateX(5px);
     }
 }
 /* Gallery */
@@ -601,6 +611,7 @@ img.dot2 {
     flex-direction: column;
     align-items: center;
     position: relative;
+    background-color: white;
 }
 .features .content .feature .text h1 {
     font-size: 40px;
